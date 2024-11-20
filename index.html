@@ -12,7 +12,7 @@
   <br> <br>
   <button id="new-book-button">New Book</button>
 
-  <!-- New Book Form -->
+
   <form id="new-book-form" style="display: none; margin-top: 1em;">
     <h2>Add a New Book</h2>
     <label>Title: <input type="text" id="title" required></label><br><br>
@@ -29,7 +29,7 @@
   <script>
     const myLibrary = [];
 
-    // Book constructor
+    //constructor ya book
     class Book {
       constructor(title, author, pages, isRead) {
         this.title = title;
@@ -43,17 +43,17 @@
       }
     }
 
-    // Add a book to the library
+    // add book to the library
     function addBookToLibrary(title, author, pages, isRead) {
       const newBook = new Book(title, author, pages, isRead);
       myLibrary.push(newBook);
       displayBooks();
     }
 
-    // Display books on the page
+    // Display the books
     function displayBooks() {
       const libraryDiv = document.getElementById('library');
-      libraryDiv.innerHTML = ''; // Clear existing display
+      libraryDiv.innerHTML = ''; 
       myLibrary.forEach((book, index) => {
         const bookCard = document.createElement('div');
         bookCard.classList.add('book-card');
@@ -71,19 +71,18 @@
       });
     }
 
-    // Toggle read status
+    // Toggle
     function toggleReadStatus(index) {
       myLibrary[index].toggleReadStatus();
       displayBooks();
     }
 
-    // Remove a book
+    // remove a book
     function removeBook(index) {
       myLibrary.splice(index, 1);
       displayBooks();
     }
 
-    // Event listener for adding a new book
     const newBookButton = document.getElementById('new-book-button');
     const newBookForm = document.getElementById('new-book-form');
     const cancelButton = document.getElementById('cancel-button');
@@ -105,12 +104,11 @@
 
       addBookToLibrary(title, author, pages, isRead);
 
-      // Clear form and hide
       newBookForm.reset();
       newBookForm.style.display = 'none';
     });
 
-    // Add some initial books for testing
+    // 
     addBookToLibrary('The Hobbit', 'J.R.R. Tolkien', 295, true);
     addBookToLibrary('1984', 'George Orwell', 328, false);
   </script>
